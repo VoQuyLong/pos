@@ -8,8 +8,11 @@ import {
   IsIn,
 } from 'class-validator';
 import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { Field, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class CreateUserDto {
+  @Field()
   @ApiProperty({ example: 'long@example.com' })
   @IsNotEmpty()
   @Validate(IsNotExist, ['User'], {
@@ -18,20 +21,24 @@ export class CreateUserDto {
   @IsEmail()
   email: string | null;
 
+  @Field()
   @ApiProperty()
   @MinLength(6)
   password?: string;
 
+  @Field()
   @ApiProperty({ example: 'Long' })
   @IsString()
   @IsNotEmpty()
   firstName: string | null;
 
+  @Field()
   @ApiProperty({ example: 'VQ' })
   @IsString()
   @IsNotEmpty()
   lastName: string | null;
 
+  @Field({ defaultValue: 'client' })
   @ApiProperty({ type: String })
   @IsString()
   @IsIn(['admin', 'client'], {
@@ -39,6 +46,7 @@ export class CreateUserDto {
   })
   role?: string | null;
 
+  @Field({ defaultValue: 'active' })
   @ApiProperty({ type: String })
   @IsString()
   @IsIn(['active', 'unactive'], {
