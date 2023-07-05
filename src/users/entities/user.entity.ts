@@ -15,20 +15,26 @@ import { TelecomProvider } from 'src/telecoms/entities/telecom.entity';
 import { District } from 'src/districts/entities/district.entity';
 import { EntityHelper } from 'src/utils/entity-helper';
 import { Exclude, Expose } from 'class-transformer';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @Entity()
+@ObjectType({ description: 'user' })
 export class User extends EntityHelper {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: String, unique: true, nullable: true })
+  @Field({ nullable: true })
+  @Column({ type: 'varchar', unique: true, nullable: true })
   @Expose({ groups: ['me', 'admin'] })
   email: string | null;
 
+  @Field({ nullable: true })
   @Column({ nullable: true })
   @Exclude({ toPlainOnly: true })
   password: string;
 
+  @Field({ nullable: true })
   @Exclude({ toPlainOnly: true })
   public previousPassword: string;
 
@@ -46,57 +52,76 @@ export class User extends EntityHelper {
     }
   }
 
+  @Field({ nullable: true })
   @Index()
-  @Column({ type: String, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   firstName: string | null;
 
+  @Field({ nullable: true })
   @Index()
-  @Column({ type: String, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   lastName: string | null;
 
-  @Column({ type: String, nullable: false })
-  role?: string;
+  @Field()
+  @Column({ type: 'varchar', nullable: false })
+  role: string;
 
+  @Field(() => Gender, { nullable: true })
   @ManyToOne(() => Gender, {
     eager: true,
+    nullable: true,
   })
-  gender?: Gender | null;
+  gender: Gender | null;
 
+  @Field(() => Job, { nullable: true })
   @ManyToOne(() => Job, {
     eager: true,
+    nullable: true,
   })
-  job?: Job | null;
+  job: Job | null;
 
+  @Field(() => TelecomProvider, { nullable: true })
   @ManyToOne(() => TelecomProvider, {
     eager: true,
+    nullable: true,
   })
-  provider?: TelecomProvider | null;
+  provider: TelecomProvider | null;
 
+  @Field(() => District, { nullable: true })
   @ManyToOne(() => District, {
     eager: true,
+    nullable: true,
   })
-  address?: District | null;
+  address: District | null;
 
-  @Column({ type: String, nullable: false })
-  status?: string | null;
+  @Field()
+  @Column({ type: 'varchar', nullable: false })
+  status: string | null;
 
-  @Column({ type: String, nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   @Index()
   @Exclude({ toPlainOnly: true })
   hash: string | null;
 
+  @Field()
   @Column({
-    default: () => 'NOW()',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
+  @Field()
   @Column({
-    default: () => 'NOW()',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
 
+  @Field()
   @Column({
-    default: () => 'NOW()',
+    type: 'timestamp',
+    nullable: true,
   })
   deletedAt: Date;
 }
