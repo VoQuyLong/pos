@@ -1,0 +1,102 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""job"""
+type Job {
+  id: ID!
+  name: String!
+}
+
+"""gender"""
+type Gender {
+  id: ID!
+  name: String!
+}
+
+"""telecom_provider"""
+type TelecomProvider {
+  id: ID!
+  name: String!
+}
+
+"""address"""
+type District {
+  id: ID!
+  name: String!
+}
+
+"""user"""
+type User {
+  id: ID!
+  email: String
+  password: String
+  previousPassword: String
+  firstName: String
+  lastName: String
+  role: String!
+  gender: Gender
+  job: Job
+  provider: TelecomProvider
+  address: District
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  district(id: Float!): District!
+  districts(page: Float! = 1, limit: Float! = 50): [District!]!
+  job(id: Float!): Job!
+  jobs(page: Float! = 1, limit: Float! = 50): [Job!]!
+  gender(id: Float!): Gender!
+  genders(page: Float! = 1, limit: Float! = 50): [Gender!]!
+  telecom(id: Float!): TelecomProvider!
+  telecoms(page: Float! = 1, limit: Float! = 50): [TelecomProvider!]!
+  user(id: Float!): User!
+  users(page: Float! = 1, limit: Float! = 50): [User!]!
+}
+
+type Mutation {
+  addDistrict(newDistrictData: CreateDistrictDto!): District!
+  removeDistrict(id: Float!): Boolean!
+  addJob(newJobData: CreateJobDto!): Job!
+  removeJob(id: Float!): Boolean!
+  addGender(newGenderData: CreateGenderDto!): Gender!
+  removeGender(id: Float!): Boolean!
+  addTelecom(newTelecomData: CreateTelecomProviderDto!): TelecomProvider!
+  removeTelecom(id: Float!): Boolean!
+  addUser(newUserData: CreateUserDto!): User!
+  removeUser(id: Float!): Boolean!
+}
+
+input CreateDistrictDto {
+  name: String!
+}
+
+input CreateJobDto {
+  name: String!
+}
+
+input CreateGenderDto {
+  name: String!
+}
+
+input CreateTelecomProviderDto {
+  name: String!
+}
+
+input CreateUserDto {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+  role: String! = "client"
+  status: String! = "active"
+}
