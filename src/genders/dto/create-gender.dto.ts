@@ -6,7 +6,7 @@ import { Field, InputType } from '@nestjs/graphql';
 @InputType()
 export class CreateGenderDto {
   @Field()
-  @ApiProperty({ example: 'VNPT' })
+  @ApiProperty({ example: 'Male' })
   @IsString()
   @IsNotEmpty()
   @Validate(IsNotExist, ['Gender'], {
