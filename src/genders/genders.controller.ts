@@ -70,7 +70,7 @@ export class GenderController {
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  findOne(@Param('id') id: string): Promise<NullableType<Gender>> {
+  findOne(@Param('id') id: number): Promise<NullableType<Gender>> {
     return this.gendersService.findOne({ id: +id });
   }
 
