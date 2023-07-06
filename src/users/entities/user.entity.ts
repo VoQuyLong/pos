@@ -7,6 +7,7 @@ import {
   BeforeInsert,
   BeforeUpdate,
   ManyToOne,
+  DeleteDateColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Job } from '../../jobs/entities/job.entity';
@@ -119,7 +120,7 @@ export class User extends EntityHelper {
   updatedAt: Date;
 
   @Field()
-  @Column({
+  @DeleteDateColumn({
     type: 'timestamp',
     nullable: true,
   })
