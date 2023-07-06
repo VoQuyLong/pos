@@ -4,8 +4,8 @@ import { DistrictsResolver } from './districts.resolver';
 import { DistrictController } from './districts.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { District } from './entities/district.entity';
-import { IsExist } from 'src/utils/validators/is-exists.validator';
-import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { IsExist } from '../utils/validators/is-exists.validator';
+import { IsNotExist } from '../utils/validators/is-not-exists.validator';
 
 @Module({
   imports: [TypeOrmModule.forFeature([District])],

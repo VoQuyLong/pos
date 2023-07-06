@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Gender } from 'src/genders/entities/gender.entity';
+import { Gender } from '../../../genders/entities/gender.entity';
 import { GenderSeedService } from './gender-seed.service';
 
 @Module({

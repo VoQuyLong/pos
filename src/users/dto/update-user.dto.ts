@@ -10,7 +10,7 @@ import {
   IsIn,
   IsNotEmpty,
 } from 'class-validator';
-import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { IsNotExist } from '../../utils/validators/is-not-exists.validator';
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty({ example: 'long@example.com' })

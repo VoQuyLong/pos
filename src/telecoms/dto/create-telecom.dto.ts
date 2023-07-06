@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, Validate, IsString } from 'class-validator';
-import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { IsNotExist } from '../../utils/validators/is-not-exists.validator';
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()

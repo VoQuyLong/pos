@@ -4,8 +4,8 @@ import { TelecomsResolver } from './telecoms.resolver';
 import { TelecomController } from './telecoms.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TelecomProvider } from './entities/telecom.entity';
-import { IsExist } from 'src/utils/validators/is-exists.validator';
-import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { IsExist } from '../utils/validators/is-exists.validator';
+import { IsNotExist } from '../utils/validators/is-not-exists.validator';
 
 @Module({
   imports: [TypeOrmModule.forFeature([TelecomProvider])],

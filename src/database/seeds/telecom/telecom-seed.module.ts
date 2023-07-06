@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TelecomProvider } from 'src/telecoms/entities/telecom.entity';
+import { TelecomProvider } from '../../../telecoms/entities/telecom.entity';
 import { TelecomProviderSeedService } from './telecom-seed.service';
 
 @Module({

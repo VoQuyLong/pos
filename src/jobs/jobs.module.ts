@@ -4,8 +4,8 @@ import { JobsResolver } from './jobs.resolver';
 import { JobController } from './jobs.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Job } from './entities/job.entity';
-import { IsExist } from 'src/utils/validators/is-exists.validator';
-import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { IsExist } from '../utils/validators/is-exists.validator';
+import { IsNotExist } from '../utils/validators/is-not-exists.validator';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Job])],

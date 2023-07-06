@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, MinLength, Validate } from 'class-validator';
-import { IsNotExist } from 'src/utils/validators/is-not-exists.validator';
+import { IsNotExist } from '../../utils/validators/is-not-exists.validator';
 
 export class AuthRegisterLoginDto {
   @ApiProperty({ example: 'long@example.com' })

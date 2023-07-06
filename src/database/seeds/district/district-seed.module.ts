@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { District } from 'src/districts/entities/district.entity';
+import { District } from '../../../districts/entities/district.entity';
 import { DistrictSeedService } from './district-seed.service';
 
 @Module({

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TelecomProvider } from 'src/telecoms/entities/telecom.entity';
-import { telecomProviders } from 'src/database/seeds/telecom/telecom.data';
+import { TelecomProvider } from '../../../telecoms/entities/telecom.entity';
+import { telecomProviders } from '../../../database/seeds/telecom/telecom.data';
 import { Repository } from 'typeorm';
 
 @Injectable()

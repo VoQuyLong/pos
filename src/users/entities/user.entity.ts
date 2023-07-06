@@ -9,11 +9,11 @@ import {
   ManyToOne,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { Job } from 'src/jobs/entities/job.entity';
-import { Gender } from 'src/genders/entities/gender.entity';
-import { TelecomProvider } from 'src/telecoms/entities/telecom.entity';
-import { District } from 'src/districts/entities/district.entity';
-import { EntityHelper } from 'src/utils/entity-helper';
+import { Job } from '../../jobs/entities/job.entity';
+import { Gender } from '../../genders/entities/gender.entity';
+import { TelecomProvider } from '../../telecoms/entities/telecom.entity';
+import { District } from '../../districts/entities/district.entity';
+import { EntityHelper } from '../../utils/entity-helper';
 import { Exclude, Expose } from 'class-transformer';
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 

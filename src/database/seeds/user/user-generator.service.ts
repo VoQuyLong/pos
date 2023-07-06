@@ -1,13 +1,13 @@
-import { User } from 'src/users/entities/user.entity';
+import { User } from '../../../users/entities/user.entity';
 import { faker } from '@faker-js/faker';
 import { genders } from '../gender/gender.data';
 import { telecomProviders } from '../telecom/telecom.data';
 import { jobs } from '../job/job.data';
 import { districts } from '../district/district.data';
-import { Gender } from 'src/genders/entities/gender.entity';
-import { Job } from 'src/jobs/entities/job.entity';
-import { TelecomProvider } from 'src/telecoms/entities/telecom.entity';
-import { District } from 'src/districts/entities/district.entity';
+import { Gender } from '../../../genders/entities/gender.entity';
+import { Job } from '../../../jobs/entities/job.entity';
+import { TelecomProvider } from '../../../telecoms/entities/telecom.entity';
+import { District } from '../../../districts/entities/district.entity';
 
 export class UserGenerator {
   private static randomIndex(

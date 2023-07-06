@@ -13,14 +13,14 @@ import { AuthUpdateDto } from './dto/auth-update.dto';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import crypto from 'crypto';
 import { AuthRegisterLoginDto } from './dto/auth-register-login.dto';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { NullableType } from '../utils/types/nullable.type';
 import { LoginResponseType } from './types/login-response.type';
 import { ConfigService } from '@nestjs/config';
-import { AllConfigType } from 'src/config/config.type';
-import { SessionService } from 'src/session/session.service';
+import { AllConfigType } from '../config/config.type';
+import { SessionService } from '../session/session.service';
 import { JwtRefreshPayloadType } from './strategies/types/jwt-refresh-payload.type';
-import { Session } from 'src/session/entities/session.entity';
+import { Session } from '../session/entities/session.entity';
 
 @Injectable()
 export class AuthService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { District } from 'src/districts/entities/district.entity';
-import { districts } from 'src/database/seeds/district/district.data';
+import { District } from '../../../districts/entities/district.entity';
+import { districts } from '../../../database/seeds/district/district.data';
 import { Repository } from 'typeorm';
 
 @Injectable()
