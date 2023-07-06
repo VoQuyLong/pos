@@ -11,7 +11,7 @@ export class UserSeedService {
     private repository: Repository<User>,
   ) {}
 
-  async run() {
+  async run(isTestEnvironment: boolean) {
     const countAdmin = await this.repository.count({
       where: {
         role: 'admin',
@@ -37,10 +37,10 @@ export class UserSeedService {
     });
 
     if (!countUser) {
-      const users: User[] = UserGenerator.generateUsers(500);
-      const length: number = users.length;
-      for (let i = 0; i < length; i++) {
-        await this.repository.save(users[i]);
+      const userCount = isTestEnvironment ? 1 : 500;
+      const users: User[] = UserGenerator.generateUsers(userCount);
+      for (const user of users) {
+        await this.repository.save(user);
       }
     }
   }
