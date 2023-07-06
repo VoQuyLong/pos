@@ -75,21 +75,40 @@ class EnvironmentVariablesValidator {
 
 export default registerAs<DatabaseConfig>('database', () => {
   validateConfig(process.env, EnvironmentVariablesValidator);
+  const isTestEnvironment: boolean = process.env.NODE_ENV === 'test';
+  const testPrefix = isTestEnvironment ? 'TEST_' : '';
 
   return {
-    url: process.env.DATABASE_URL,
-    type: process.env.DATABASE_TYPE,
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT
+    url: process.env[testPrefix + 'DATABASE_URL'] || process.env.DATABASE_URL,
+    type:
+      process.env[testPrefix + 'DATABASE_TYPE'] || process.env.DATABASE_TYPE,
+    host:
+      process.env[testPrefix + 'DATABASE_HOST'] || process.env.DATABASE_HOST,
+    port: process.env[testPrefix + 'DATABASE_PORT']
+      ? parseInt(process.env[testPrefix + 'DATABASE_PORT'], 10)
+      : process.env.DATABASE_PORT
       ? parseInt(process.env.DATABASE_PORT, 10)
       : 3306,
-    password: process.env.DATABASE_PASSWORD,
-    name: process.env.DATABASE_NAME,
-    username: process.env.DATABASE_USERNAME,
-    synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
-    maxConnections: process.env.DATABASE_MAX_CONNECTIONS
+    password:
+      process.env[testPrefix + 'DATABASE_PASSWORD'] ||
+      process.env.DATABASE_PASSWORD,
+    name:
+      process.env[testPrefix + 'DATABASE_NAME'] || process.env.DATABASE_NAME,
+    username:
+      process.env[testPrefix + 'DATABASE_USERNAME'] ||
+      process.env.DATABASE_USERNAME,
+    synchronize:
+      process.env[testPrefix + 'DATABASE_SYNCHRONIZE'] === 'true'
+        ? process.env[testPrefix + 'DATABASE_SYNCHRONIZE'] === 'true'
+        : process.env.DATABASE_SYNCHRONIZE === 'true',
+    maxConnections: process.env[testPrefix + 'DATABASE_MAX_CONNECTIONS']
+      ? parseInt(process.env[testPrefix + 'DATABASE_MAX_CONNECTIONS'], 10)
+      : process.env.DATABASE_MAX_CONNECTIONS
       ? parseInt(process.env.DATABASE_MAX_CONNECTIONS, 10)
       : 100,
-    rejectUnauthorized: process.env.DATABASE_REJECT_UNAUTHORIZED === 'true',
+    rejectUnauthorized:
+      process.env[testPrefix + 'DATABASE_REJECT_UNAUTHORIZED'] === 'true'
+        ? process.env[testPrefix + 'DATABASE_REJECT_UNAUTHORIZED'] === 'true'
+        : process.env.DATABASE_REJECT_UNAUTHORIZED === 'true',
   };
 });
