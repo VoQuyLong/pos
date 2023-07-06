@@ -26,7 +26,6 @@ export class UserGenerator {
 
     const user: User = new User();
     user.email = faker.internet.email();
-    user.password = faker.internet.password();
     user.firstName = faker.person.firstName();
     user.lastName = faker.person.lastName();
     user.password = 'secret';
