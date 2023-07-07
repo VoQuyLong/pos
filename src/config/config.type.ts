@@ -1,5 +1,6 @@
 export type AppConfig = {
   nodeEnv: string;
+  logMode: string;
   name: string;
   workingDirectory: string;
   backendDomain: string;

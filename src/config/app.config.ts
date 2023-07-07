@@ -53,7 +53,8 @@ export default registerAs<AppConfig>('app', () => {
   validateConfig(process.env, EnvironmentVariablesValidator);
 
   return {
-    nodeEnv: process.env.NODE_ENV || 'development',
+    nodeEnv: process.env.NODE_ENV || 'development' || 'test' || 'production',
+    logMode: process.env.LOG_MODE || 'false',
     name: process.env.APP_NAME || 'app',
     workingDirectory: process.env.PWD || process.cwd(),
     backendDomain: process.env.BACKEND_DOMAIN ?? 'http://localhost',
