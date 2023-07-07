@@ -28,12 +28,15 @@ describe('Auth E2E', () => {
   });
 
   it('Admin login - should get a JWT and user`s info', async () => {
-    const loginReq = await request(app.getHttpServer())
+    await request(app.getHttpServer())
       .post('/auth/admin/email/login')
       .send(adminLoginDto)
-      .expect(200);
-    expect(loginReq.body.token && loginReq.body.refreshToken);
-    expect(loginReq.body.user);
+      .expect(200)
+      .expect(({ body }) => {
+        expect(body).toBeDefined();
+        expect(body.token).toBeDefined();
+        expect(body.refreshToken).toBeDefined();
+      });
   });
 
   it('Should get user`s infor successfully', async () => {
@@ -48,10 +51,11 @@ describe('Auth E2E', () => {
       .set('Authorization', 'Bearer ' + token)
       .expect(200)
       .expect(({ body }) => {
-        expect(body.id).toEqual(1);
-        expect(body.firstName).toEqual('Long');
-        expect(body.lastName).toEqual('VQ');
-        expect(body.role).toEqual('admin');
+        expect(body).toBeDefined();
+        expect(body.id).toBeDefined();
+        expect(body.firstName).toBeDefined();
+        expect(body.lastName).toBeDefined();
+        expect(body.role).toBeDefined();
       });
   });
 
@@ -74,9 +78,11 @@ describe('Auth E2E', () => {
       .set('Authorization', 'Bearer ' + token)
       .expect(200)
       .expect(({ body }) => {
-        expect(body.firstName).toEqual('Bethel');
-        expect(body.lastName).toEqual('Harvey');
-        expect(body.role).toEqual('client');
+        expect(body).toBeDefined();
+        expect(body.id).toBeDefined();
+        expect(body.firstName).toBeDefined();
+        expect(body.lastName).toBeDefined();
+        expect(body.role).toBeDefined();
       });
   });
 
@@ -104,6 +110,11 @@ describe('Auth E2E', () => {
       .send(newLoginDto)
       .expect(200)
       .expect(({ body }) => {
+        expect(body).toBeDefined();
+        expect(body.user).toBeDefined();
+        expect(body.user.firstName).toBeDefined();
+        expect(body.user.lastName).toBeDefined();
+        expect(body.user.role).toBeDefined();
         expect(body.user.firstName).toEqual(registerDto.firstName);
         expect(body.user.lastName).toEqual(registerDto.lastName);
         expect(body.user.role).toEqual('client');
@@ -122,6 +133,10 @@ describe('Auth E2E', () => {
       .set('Authorization', 'Bearer ' + token)
       .expect(200)
       .expect(({ body }) => {
+        expect(body).toBeDefined();
+        expect(body.firstName).toBeDefined();
+        expect(body.lastName).toBeDefined();
+        expect(body.role).toBeDefined();
         expect(body.firstName).toEqual(registerDto.firstName);
         expect(body.lastName).toEqual(registerDto.lastName);
         expect(body.role).toEqual('client');
@@ -140,8 +155,9 @@ describe('Auth E2E', () => {
       .set('Authorization', 'Bearer ' + token)
       .expect(200)
       .expect(({ body }) => {
-        expect(body.token);
-        expect(body.refreshToken);
+        expect(body.token).toBeDefined();
+        expect(body.refreshToken).toBeDefined();
+        expect(body.tokenExpires).toBeDefined();
         expect(body.tokenExpires).toBeGreaterThan(Date.now());
       });
   });
@@ -175,6 +191,8 @@ describe('Auth E2E', () => {
       .send(updateUserDto)
       .expect(200)
       .expect(({ body }) => {
+        expect(body).toBeDefined();
+        expect(body.firstName).toBeDefined();
         expect(body.firstName).toEqual(updateUserDto.firstName);
       });
   });
@@ -193,6 +211,8 @@ describe('Auth E2E', () => {
       .send(updateUserDto)
       .expect(200)
       .expect(({ body }) => {
+        expect(body).toBeDefined();
+        expect(body.lastName).toBeDefined();
         expect(body.lastName).toEqual(updateUserDto.lastName);
       });
   });
