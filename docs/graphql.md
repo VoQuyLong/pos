@@ -27,7 +27,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 })
 export class AppModule {}
 ```
-- Đối với đoạn code trên, khi khởi động ứng dụng, một file `.gql` sẽ được tự động sinh ra dự vào các đánh dấu các Entity.
+- Đối với đoạn code trên, khi khởi động ứng dụng, một file `schema.gql` sẽ được tự động sinh ra dựa vào các decorator trên Entities.
 ## Entity
 Để triển khai GraphQL trong ứng dụng PSE, chúng ta phải khai báo các trường dữ liệu nhằm mục đính tạo schema khi server được khởi chạy.
 
