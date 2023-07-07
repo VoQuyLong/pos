@@ -8,6 +8,7 @@ import {
   BeforeUpdate,
   ManyToOne,
   DeleteDateColumn,
+  Generated,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Job } from '../../jobs/entities/job.entity';
@@ -23,6 +24,7 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 export class User extends EntityHelper {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
+  @Generated('increment')
   id: number;
 
   @Field({ nullable: true })
