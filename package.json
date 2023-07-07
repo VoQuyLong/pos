@@ -1,8 +1,8 @@
 {
-  "name": "pos",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "pse",
+  "version": "1.0.0",
+  "description": "Sefl-study project in Vitalify Asia - Week 1",
+  "author": "Võ Qúy Long",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

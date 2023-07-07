@@ -13,10 +13,10 @@ Features
 --------
   
 - [Authentication](./docs/authentication.md)
-- [Graphql api](./docs/graphql.md)
-- [Restful api](./docs/restful.md)
-- [Auto seeding data](./docs/database.md)
-- [Unit testing](./docs/test.md)
+- [Graphql](./docs/graphql.md)
+- [Restful](./docs/restful.md)
+- [Database](./docs/database.md)
+- [Unit test](./docs/test.md)
 - Two enviroment: `test` and `development`
 
 Framework
