@@ -38,7 +38,7 @@ export class GenderController {
 
 ## Auth APIs
 1. API đăng nhập
-[Admin login](./images/auth-api.PNG)
+![Admin login](./images/auth-api.PNG)
 
 - Kết quả trả về có định dạng JSON:
 ```json
