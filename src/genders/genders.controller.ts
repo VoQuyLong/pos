@@ -77,7 +77,7 @@ export class GenderController {
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   update(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateGenderDto: UpdateGenderDto,
   ): Promise<Gender> {
     return this.gendersService.update(id, updateGenderDto);
@@ -85,7 +85,7 @@ export class GenderController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: number): Promise<void> {
+  remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.gendersService.softDelete(id);
   }
 }

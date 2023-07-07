@@ -70,14 +70,14 @@ export class JobController {
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  findOne(@Param('id') id: string): Promise<NullableType<Job>> {
-    return this.jobsService.findOne({ id: +id });
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<NullableType<Job>> {
+    return this.jobsService.findOne({ id: id });
   }
 
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   update(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateJobDto: UpdateJobDto,
   ): Promise<Job> {
     return this.jobsService.update(id, updateJobDto);
@@ -85,7 +85,7 @@ export class JobController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: number): Promise<void> {
+  remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.jobsService.softDelete(id);
   }
 }

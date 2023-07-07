@@ -72,14 +72,16 @@ export class TelecomController {
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  findOne(@Param('id') id: string): Promise<NullableType<TelecomProvider>> {
-    return this.telecomsService.findOne({ id: +id });
+  findOne(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<NullableType<TelecomProvider>> {
+    return this.telecomsService.findOne({ id: id });
   }
 
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   update(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateTelecomProviderDto: UpdateTelecomProviderDto,
   ): Promise<TelecomProvider> {
     return this.telecomsService.update(id, updateTelecomProviderDto);
@@ -87,7 +89,7 @@ export class TelecomController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: number): Promise<void> {
+  remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.telecomsService.softDelete(id);
   }
 }

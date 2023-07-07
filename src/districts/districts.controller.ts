@@ -70,14 +70,16 @@ export class DistrictController {
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  findOne(@Param('id') id: string): Promise<NullableType<District>> {
-    return this.districtsService.findOne({ id: +id });
+  findOne(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<NullableType<District>> {
+    return this.districtsService.findOne({ id: id });
   }
 
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   update(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateDistrictDto: UpdateDistrictDto,
   ): Promise<District> {
     return this.districtsService.update(id, updateDistrictDto);
@@ -85,7 +87,7 @@ export class DistrictController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: number): Promise<void> {
+  remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.districtsService.softDelete(id);
   }
 }
