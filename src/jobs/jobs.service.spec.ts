@@ -88,7 +88,7 @@ describe('JobService', () => {
     it('should successfully update a job', async () => {
       const id = 1;
       const payload: DeepPartial<Job> = {
-        name: 'Updated Job',
+        name: 'Job',
       };
 
       const updatedJob = new Job();

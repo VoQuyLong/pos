@@ -32,26 +32,28 @@ describe('TelecomProviderService', () => {
         {
           provide: getRepositoryToken(TelecomProvider),
           useValue: {
-            create: jest
-              .fn()
-              .mockImplementationOnce((dto: CreateTelecomProviderDto) =>
-                Promise.resolve(dto),
-              )
-              .mockImplementationOnce(
-                (id: number, payload: DeepPartial<TelecomProvider>) =>
-                  Promise.resolve({ id, ...payload }),
-              ),
+            // create: jest
+            //   .fn()
+            //   .mockImplementationOnce((dto: CreateTelecomProviderDto) =>
+            //     Promise.resolve(dto),
+            //   )
+            //   .mockImplementationOnce(
+            //     (id: number, payload: DeepPartial<TelecomProvider>) =>
+            //       Promise.resolve({ id, ...payload }),
+            //   ),
+            create: jest.fn().mockResolvedValue(sampleTelecomProvider),
             find: jest.fn().mockResolvedValue(telecomArray),
             findOne: jest.fn().mockResolvedValue(sampleTelecomProvider),
-            save: jest
-              .fn()
-              .mockImplementation((telecomProvider: TelecomProvider) =>
-                Promise.resolve(
-                  telecomProvider.id == undefined
-                    ? { id: 1, ...telecomProvider }
-                    : telecomProvider,
-                ),
-              ),
+            // save: jest
+            //   .fn()
+            //   .mockImplementation((telecomProvider: TelecomProvider) =>
+            //     Promise.resolve(
+            //       telecomProvider.id == undefined
+            //         ? { id: 1, ...telecomProvider }
+            //         : telecomProvider,
+            //     ),
+            //   ),
+            save: jest.fn().mockResolvedValue(sampleTelecomProvider),
             softDelete: jest.fn(),
           },
         },
